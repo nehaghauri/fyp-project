@@ -19,7 +19,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-safe mobile-optimized">
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -77,7 +77,7 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           <Button 
             size="lg" 
             onClick={onComplete}
-            className="group bg-gradient-primary hover:shadow-glow transition-all duration-300 px-8 py-6 text-lg font-semibold rounded-2xl"
+            className="group bg-gradient-primary hover:shadow-glow transition-all duration-300 px-12 py-4 text-lg font-semibold rounded-2xl min-h-[56px] w-full max-w-xs touch-target"
           >
             <Sparkles className="mr-2 h-5 w-5 group-hover:animate-spin transition-transform" />
             Begin Your Journey
@@ -89,12 +89,6 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
           </div>
         </div>
 
-        {/* Subtle animation indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-primary/30 rounded-full">
-            <div className="w-1 h-3 bg-primary-glow rounded-full mx-auto mt-2 animate-bounce" />
-          </div>
-        </div>
       </div>
     </div>
   );
