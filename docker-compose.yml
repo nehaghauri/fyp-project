@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - infiniserve_db_data:/var/lib/postgresql/data  # ✅ use your original volume
+
+  odoo:
+    image: odoo:18
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    volumes:
+      - infiniserve_odoo_data:/var/lib/odoo           # ✅ original Odoo volume
+      - ./addons:/mnt/extra-addons
+
+volumes:
+  infiniserve_db_data:
+    external: true
+  infiniserve_odoo_data:
+    external: true

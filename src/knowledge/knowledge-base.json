@@ -1,0 +1,42 @@
+{
+  "company": {
+    "name": "InfiniServe",
+    "description": "AI-powered customer service platform",
+    "products": [
+      "Digital Twin Assistant",
+      "Smart Customer Analytics",
+      "AI Chat Support"
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What are your business hours?",
+      "answer": "We operate 24/7 with our AI assistant, and human support is available Monday-Friday, 9 AM - 6 PM EST."
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "answer": "We accept credit cards (Visa, Mastercard, AmEx), PayPal, and wire transfers for enterprise clients."
+    },
+    {
+      "question": "What is your return policy?",
+      "answer": "We offer a 30-day money-back guarantee on all subscriptions. No questions asked."
+    }
+  ],
+  "products": [
+    {
+      "name": "Basic Plan",
+      "price": "$29/month",
+      "features": ["Up to 1,000 customers", "Email support", "Basic analytics"]
+    },
+    {
+      "name": "Pro Plan",
+      "price": "$99/month",
+      "features": ["Unlimited customers", "Priority support", "Advanced AI insights", "Custom integrations"]
+    }
+  ],
+  "policies": {
+    "shipping": "All digital services are available immediately upon purchase.",
+    "refunds": "Full refund within 30 days of purchase.",
+    "privacy": "We never share customer data with third parties."
+  }
+}

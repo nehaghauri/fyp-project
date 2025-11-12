@@ -17,38 +17,56 @@ const Index = () => {
     switch (currentPage) {
       case "splash":
         return <SplashScreen onComplete={() => setCurrentPage("home")} />;
+
       case "home":
         return <HomePage onNavigate={navigate} />;
+
       case "chat":
         return <ChatInterface onBack={() => setCurrentPage("home")} />;
+
       case "profile":
         return <DigitalTwinProfile onBack={() => setCurrentPage("home")} />;
+
       case "insights":
-        return <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <h1 className="text-2xl font-bold gradient-text">Insights Dashboard</h1>
-            <p className="text-muted-foreground">Coming Soon - AI Analytics & Insights</p>
-            <button 
-              onClick={() => setCurrentPage("home")}
-              className="text-primary underline"
-            >
-              Back to Home
-            </button>
+        return (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center space-y-4">
+              <h1 className="text-2xl font-bold gradient-text">
+                Insights Dashboard
+              </h1>
+              <p className="text-muted-foreground">
+                Coming Soon - AI Analytics & Insights
+              </p>
+              <button
+                onClick={() => setCurrentPage("home")}
+                className="text-primary underline"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
-        </div>;
+        );
+
       case "collaborations":
-        return <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <h1 className="text-2xl font-bold gradient-text">Brand Collaborations</h1>
-            <p className="text-muted-foreground">Coming Soon - Partnership Opportunities</p>
-            <button 
-              onClick={() => setCurrentPage("home")}
-              className="text-primary underline"
-            >
-              Back to Home
-            </button>
+        return (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center space-y-4">
+              <h1 className="text-2xl font-bold gradient-text">
+                Brand Collaborations
+              </h1>
+              <p className="text-muted-foreground">
+                Coming Soon - Partnership Opportunities
+              </p>
+              <button
+                onClick={() => setCurrentPage("home")}
+                className="text-primary underline"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
-        </div>;
+        );
+
       default:
         return <HomePage onNavigate={navigate} />;
     }

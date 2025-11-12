@@ -1,0 +1,102 @@
+[
+  {
+    "instruction": "Simulate a digital twin responding to a brand survey question.",
+    "input": "Brand: What influences your decision to stay loyal to a brand?",
+    "output": "Consistency and emotional connection. I stay with brands that feel like an extension of my identity."
+  },
+  {
+    "instruction": "Analyze customer feedback to identify emotions and brand perception.",
+    "input": "Feedback: The app looks amazing but keeps logging me out.",
+    "output": "Emotion: mild frustration. Brand perception: visually appealing but unreliable experience."
+  },
+  {
+    "instruction": "Generate a digital twin’s reflection on a purchase experience.",
+    "input": "Customer purchased a skincare product recommended by an influencer.",
+    "output": "I felt confident buying it because the influencer’s skin type matched mine. The brand gained my trust through relatability."
+  },
+  {
+    "instruction": "Simulate a brand asking for insight from a twin.",
+    "input": "Brand: How can we improve our onboarding flow?",
+    "output": "Simplify the steps and personalize the intro. A short quiz that adapts to my needs would make me feel understood."
+  },
+  {
+    "instruction": "Simulate a twin’s preference-based decision.",
+    "input": "Scenario: Choosing between two clothing brands — one affordable, one eco-friendly.",
+    "output": "I’d pick the eco-friendly one. Sustainability signals long-term respect for people like me."
+  },
+  {
+    "instruction": "Analyze behavioral tone from customer chat.",
+    "input": "User: I didn’t hate the product, but it didn’t live up to the hype either.",
+    "output": "Sentiment: neutral-negative. Emotion: disappointment with unmet expectations."
+  },
+  {
+    "instruction": "Generate a twin’s description of ideal brand communication.",
+    "input": "Brand: How should we talk to customers like you?",
+    "output": "Be conversational and transparent. I appreciate when brands admit imperfections instead of pretending to be perfect."
+  },
+  {
+    "instruction": "Simulate brand–twin collaboration insight.",
+    "input": "Brand: What makes a campaign emotionally engaging to you?",
+    "output": "When it mirrors real experiences and emotions. I connect with stories, not slogans."
+  },
+  {
+    "instruction": "Analyze customer engagement drivers.",
+    "input": "User consistently clicks on self-improvement and wellness content.",
+    "output": "Psychological insight: user seeks personal growth and stability. Recommend products tied to self-care and progress."
+  },
+  {
+    "instruction": "Generate twin response about post-purchase feelings.",
+    "input": "Brand: How did you feel after receiving your order?",
+    "output": "Excited at first, but slightly anxious about whether I made the right choice. A follow-up reassurance message would help."
+  },
+  {
+    "instruction": "Simulate an empathetic response from a twin to brand feedback.",
+    "input": "Brand: We’re sorry your delivery was late. We’re improving logistics.",
+    "output": "Thanks for acknowledging it! A real-time tracking feature would make me feel more in control next time."
+  },
+  {
+    "instruction": "Predict brand affinity traits.",
+    "input": "Customer prefers minimalist design, calm colors, and subtle branding.",
+    "output": "Affinity: wellness, modern tech, sustainable lifestyle brands."
+  },
+  {
+    "instruction": "Simulate a twin describing a poor digital experience.",
+    "input": "Scenario: Brand website takes long to load and shows irrelevant popups.",
+    "output": "It feels cluttered and impatient. I lose trust when a brand doesn’t respect my time."
+  },
+  {
+    "instruction": "Generate an AI twin’s emotional state after an ad interaction.",
+    "input": "Ad: 'Limited time offer – don’t miss out!'",
+    "output": "Emotion: urgency mixed with resistance. I dislike feeling pressured; prefer value-based persuasion."
+  },
+  {
+    "instruction": "Help a brand understand deeper motivations.",
+    "input": "Customer repeatedly purchases organic tea brands.",
+    "output": "Motivation: calm, ritual, mindfulness. The purchase is more emotional than practical."
+  },
+  {
+    "instruction": "Simulate twin’s description of digital identity alignment.",
+    "input": "Brand: What makes you feel represented in our campaigns?",
+    "output": "Seeing people who look and live like me. Authentic diversity signals that you truly get your audience."
+  },
+  {
+    "instruction": "Analyze tone of a user’s complaint.",
+    "input": "User: I tried contacting support three times — still no reply!",
+    "output": "Tone: irritated and neglected. Action: immediate acknowledgment + personalized apology."
+  },
+  {
+    "instruction": "Generate a twin reflection on emotional loyalty.",
+    "input": "Scenario: User keeps rebuying from a brand that shares mental health stories.",
+    "output": "They’ve built trust through vulnerability. I feel emotionally safe with their messaging."
+  },
+  {
+    "instruction": "Simulate brand testing new ad copy ideas.",
+    "input": "Brand: Which resonates more — 'Own your style' or 'Express who you are'?",
+    "output": "‘Express who you are’ — it feels inclusive and emotionally honest. The first sounds too generic."
+  },
+  {
+    "instruction": "Simulate a twin summarizing their personality profile for the brand.",
+    "input": "Brand: Describe yourself in a few words.",
+    "output": "Empathetic, curious, and mindful. I value emotional intelligence and authenticity in brands."
+  }
+]
