@@ -1,12 +1,18 @@
+
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import LoginPage from "@/pages/LoginPage";
 import Index from "./pages/Index";
 import CustomersPage from "./pages/CustomersPage";
 import ChatPage from "./pages/ChatPage";
 import GeneralChatPage from "./pages/GeneralChatPage";
+import PersonalityPage from "@/pages/PersonalityPage";
 import InsightsPage from "./pages/InsightsPage";
 import KnowledgeBasePage from "./pages/KnowledgeBasePage";
 import AdminHomePage from "@/pages/AdminHomePage";
@@ -17,23 +23,99 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/customers" element={<CustomersPage onNavigate={() => window.location.href = "/"} />} />
-          <Route path="/chat/:customerId" element={<ChatPage />} />
-          <Route path="/chat" element={<GeneralChatPage />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/knowledge" element={<KnowledgeBasePage />} />
-          <Route path="/admin-home" element={<AdminHomePage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/login" element={<LoginPage />} />
+
+            {/* User Routes */}
+            <Route 
+              path="/" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <Index />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/customers" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <CustomersPage onNavigate={() => window.location.href = "/"} />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/chat/:customerId" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <ChatPage />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/chat" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <GeneralChatPage />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/insights" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <InsightsPage />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/knowledge" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <KnowledgeBasePage />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Admin Routes */}
+            <Route 
+              path="/admin-home" 
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminHomePage />
+                </ProtectedRoute>
+              } 
+
+              
+            />
+            <Route 
+              path="/admin" 
+              element={
+                <ProtectedRoute allowedRoles={['admin']}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <PersonalityPage />
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 

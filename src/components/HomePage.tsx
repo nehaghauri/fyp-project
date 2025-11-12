@@ -1,287 +1,79 @@
-// import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { Button } from "@/components/ui/button";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import { 
-//   MessageCircle, 
-//   BarChart3, 
-//   Users, 
-//   Sparkles,
-//   Mic,
-//   Brain,
-//   Zap,
-//   Settings,
-//   BookOpen  // ← ADD THIS
-// } from "lucide-react";
-// import avatarImage from "@/assets/digital-twin-avatar.png";
-// import ActivityFeed from "@/components/ActivityFeed";
-
-// const HomePage = () => {
-//   const navigate = useNavigate();
-//   const [greeting] = useState("Good morning");
-
-//   const quickActions = [
-//     {
-//       icon: MessageCircle,
-//       title: "Start Chat",
-//       description: "Converse with your AI twin",
-//       color: "primary",
-//       action: () => navigate("/chat")
-//     },
-//     {
-//       icon: BookOpen, // Import from lucide-react
-//       title: "Knowledge Base",
-//       description: "Manage your AI documents",
-//       color: "primary",
-//       action: () => navigate("/knowledge")
-//     },
-//     {
-//       icon: BarChart3,
-//       title: "Insights",
-//       description: "View your AI analytics",
-//       color: "secondary",
-//       action: () => navigate("/insights")
-//     },
-//     {
-//       icon: Users,
-//       title: "Collaborations",
-//       description: "Explore brand partnerships",
-//       color: "accent",
-//       action: () => navigate("/collaborations")
-//     },
-//     {
-//       icon: Settings,
-//       title: "Twin Profile",
-//       description: "Customize your digital self",
-//       color: "muted",
-//       action: () => navigate("/profile")
-//     },
-//     {
-//       icon: Users,
-//       title: "Customers",
-//       description: "View your Odoo customers",
-//       color: "secondary",
-//       action: () => navigate("/customers")
-//     }
-//   ];
-
-//   const insights = [
-//     { title: "Conversation Streak", value: "7 days", trend: "+2 from last week" },
-//     { title: "Twin Accuracy", value: "94%", trend: "+3% improvement" },
-//     { title: "Brand Matches", value: "12", trend: "3 new opportunities" }
-//   ];
-
-//   return (
-//     <div className="min-h-screen p-6 space-y-8">
-//       {/* Header */}
-//       <div className="flex items-center justify-between">
-//         <div>
-//           <h1 className="text-3xl font-bold gradient-text">
-//             {greeting}, Alex
-//           </h1>
-//           <p className="text-muted-foreground">
-//             Your digital twin is ready to assist you
-//           </p>
-//         </div>
-//         <Button variant="outline" size="icon" className="rounded-full">
-//           <Settings className="h-5 w-5" />
-//         </Button>
-//       </div>
-
-//       {/* Digital Twin Avatar Section */}
-//       <Card className="glass-card overflow-hidden">
-//         <CardContent className="p-8">
-//           <div className="flex items-center space-x-6">
-//             <div className="relative">
-//               <img 
-//                 src={avatarImage} 
-//                 alt="Your Digital Twin"
-//                 className="w-24 h-24 rounded-full object-cover glow-effect"
-//               />
-//               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-//                 <Zap className="h-4 w-4 text-accent-foreground" />
-//               </div>
-//             </div>
-//             <div className="flex-1">
-//               <h3 className="text-xl font-semibold mb-2">Your Digital Twin</h3>
-//               <p className="text-muted-foreground mb-4">
-//                 I've learned your preferences and communication style. Ready to represent you intelligently.
-//               </p>
-//               <div className="flex space-x-2">
-//                 <Button 
-//                   size="sm" 
-//                   className="bg-gradient-primary"
-//                   onClick={() => navigate("/chat")}
-//                 >
-//                   <MessageCircle className="mr-2 h-4 w-4" />
-//                   Chat Now
-//                 </Button>
-//                 <Button 
-//                   size="sm" 
-//                   variant="outline"
-//                   onClick={() => navigate("/profile")}
-//                 >
-//                   <Brain className="mr-2 h-4 w-4" />
-//                   Customize
-//                 </Button>
-//               </div>
-//             </div>
-//           </div>
-//         </CardContent>
-//       </Card>
-
-//       {/* Quick Actions */}
-//       <div>
-//         <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-//         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-//           {quickActions.map((action, index) => (
-//             <Card 
-//               key={index} 
-//               className="glass-card cursor-pointer hover:shadow-glow transition-all duration-300 group"
-//               onClick={action.action}
-//             >
-//               <CardContent className="p-6 text-center space-y-3">
-//                 <div className="mx-auto w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center group-hover:animate-scale-in">
-//                   <action.icon className="h-6 w-6 text-white" />
-//                 </div>
-//                 <div>
-//                   <h3 className="font-semibold text-sm">{action.title}</h3>
-//                   <p className="text-xs text-muted-foreground">{action.description}</p>
-//                 </div>
-//               </CardContent>
-//             </Card>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Two Column Layout: Insights + Activity Feed */}
-//       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-//         {/* Insights Cards - Takes 2 columns on large screens */}
-//         <div className="lg:col-span-2">
-//           <h2 className="text-xl font-semibold mb-4">Your AI Insights</h2>
-//           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//             {insights.map((insight, index) => (
-//               <Card key={index} className="glass-card">
-//                 <CardHeader className="pb-3">
-//                   <CardTitle className="text-sm font-medium text-muted-foreground">
-//                     {insight.title}
-//                   </CardTitle>
-//                 </CardHeader>
-//                 <CardContent>
-//                   <div className="text-2xl font-bold mb-1">{insight.value}</div>
-//                   <div className="text-xs text-accent font-medium flex items-center">
-//                     <Sparkles className="h-3 w-3 mr-1" />
-//                     {insight.trend}
-//                   </div>
-//                 </CardContent>
-//               </Card>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Activity Feed - Takes 1 column on large screens */}
-//         <div className="lg:col-span-1">
-//           <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-//           <ActivityFeed />
-//         </div>
-//       </div>
-
-//       {/* Voice Assistant Quick Access */}
-//       <div className="fixed bottom-6 right-6">
-//         <Button 
-//           size="lg" 
-//           className="rounded-full w-16 h-16 bg-gradient-primary shadow-glow hover:shadow-lg transition-all duration-300"
-//           onClick={() => navigate("/chat")}
-//         >
-//           <Mic className="h-6 w-6" />
-//         </Button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HomePage;
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { 
   MessageCircle, 
-  BarChart3, 
-  Users, 
   Sparkles,
   Mic,
   Brain,
   Zap,
   Settings,
-  BookOpen,
-  Shield
+  LogOut,
+  Store,
+  History,
+  ThumbsUp,
+  Shield,
+  TrendingUp,
+  Plus
 } from "lucide-react";
 import avatarImage from "@/assets/digital-twin-avatar.png";
-import ActivityFeed from "@/components/ActivityFeed";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [greeting] = useState("Good morning");
+  const [twinName, setTwinName] = useState(user?.twinName || 'Your Digital Twin');
+  const [twinBio, setTwinBio] = useState('A helpful AI assistant that represents me');
 
-  const quickActions = [
-    {
-      icon: MessageCircle,
-      title: "Start Chat",
-      description: "Converse with your AI twin",
-      color: "primary",
-      action: () => navigate("/chat")
-    },
-    {
-      icon: BookOpen,
-      title: "Knowledge Base",
-      description: "Manage your AI documents",
-      color: "primary",
-      action: () => navigate("/knowledge")
-    },
-    {
-      icon: BarChart3,
-      title: "Insights",
-      description: "View your AI analytics",
-      color: "secondary",
-      action: () => navigate("/insights")
-    },
-    {
-      icon: Users,
-      title: "Collaborations",
-      description: "Explore brand partnerships",
-      color: "accent",
-      action: () => navigate("/collaborations")
-    },
-    {
-      icon: Settings,
-      title: "Twin Profile",
-      description: "Customize your digital self",
-      color: "muted",
-      action: () => navigate("/profile")
-    },
-    {
-      icon: Users,
-      title: "Customers",
-      description: "View your Odoo customers",
-      color: "secondary",
-      action: () => navigate("/customers")
-    },
-    {
-      icon: Shield,
-      title: "Admin Dashboard",
-      description: "Manage platform",
-      color: "primary",
-      action: () => navigate("/admin")
+  // Load twin profile from localStorage on mount
+  useEffect(() => {
+    const savedProfile = localStorage.getItem('digitalTwinProfile');
+    if (savedProfile) {
+      try {
+        const profile = JSON.parse(savedProfile);
+        if (profile.name) {
+          setTwinName(profile.name);
+        }
+        if (profile.bio) {
+          setTwinBio(profile.bio);
+        }
+      } catch (error) {
+        console.error('Failed to load twin profile:', error);
+      }
     }
+  }, []);
+
+  // Mock data - replace with real data later
+  const connectedBrands = [
+    { id: 1, name: "TechCorp", logo: "🏢", status: "active", interactions: 12 },
+    { id: 2, name: "FashionHub", logo: "👗", status: "active", interactions: 5 },
+    { id: 3, name: "HealthPlus", logo: "🏥", status: "active", interactions: 8 }
   ];
 
-  const insights = [
-    { title: "Conversation Streak", value: "7 days", trend: "+2 from last week" },
-    { title: "Twin Accuracy", value: "94%", trend: "+3% improvement" },
-    { title: "Brand Matches", value: "12", trend: "3 new opportunities" }
+  const recentConversations = [
+    { brand: "TechCorp", message: "Product inquiry resolved", time: "2 hours ago", sentiment: "positive" },
+    { brand: "FashionHub", message: "Order status updated", time: "5 hours ago", sentiment: "positive" },
+    { brand: "HealthPlus", message: "Appointment scheduled", time: "1 day ago", sentiment: "neutral" }
   ];
+
+  const recommendations = [
+    { brand: "TechCorp", product: "Premium Support Package", reason: "Based on your recent inquiries" },
+    { brand: "FashionHub", product: "Summer Collection", reason: "Matches your style preferences" }
+  ];
+
+  const activityStats = [
+    { label: "Interactions This Week", value: "18", icon: MessageCircle },
+    { label: "Satisfaction Score", value: "96%", icon: ThumbsUp },
+    { label: "Active Brands", value: "3", icon: Store }
+  ];
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <div className="min-h-screen p-6 space-y-8">
@@ -289,18 +81,35 @@ const HomePage = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold gradient-text">
-            {greeting}, Alex
+            {greeting}, {user?.name || 'User'}
           </h1>
           <p className="text-muted-foreground">
-            Your digital twin is ready to assist you
+            Your digital twin is working for you
           </p>
         </div>
-        <Button variant="outline" size="icon" className="rounded-full">
-          <Settings className="h-5 w-5" />
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="rounded-full"
+            onClick={() => navigate("/profile")}
+            title="Settings"
+          >
+            <Settings className="h-5 w-5" />
+          </Button>
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="rounded-full"
+            onClick={handleLogout}
+            title="Logout"
+          >
+            <LogOut className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
 
-      {/* Digital Twin Avatar Section */}
+      {/* Digital Twin Card */}
       <Card className="glass-card overflow-hidden">
         <CardContent className="p-8">
           <div className="flex items-center space-x-6">
@@ -310,14 +119,16 @@ const HomePage = () => {
                 alt="Your Digital Twin"
                 className="w-24 h-24 rounded-full object-cover glow-effect"
               />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                <Zap className="h-4 w-4 text-accent-foreground" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+                <Zap className="h-4 w-4 text-white" />
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-xl font-semibold mb-2">Your Digital Twin</h3>
+              <h3 className="text-xl font-semibold mb-2">
+                {twinName}
+              </h3>
               <p className="text-muted-foreground mb-4">
-                I've learned your preferences and communication style. Ready to represent you intelligently.
+                Active and learning • Handling {connectedBrands.length} brand connections
               </p>
               <div className="flex space-x-2">
                 <Button 
@@ -326,7 +137,7 @@ const HomePage = () => {
                   onClick={() => navigate("/chat")}
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Chat Now
+                  Chat with Twin
                 </Button>
                 <Button 
                   size="sm" 
@@ -334,7 +145,7 @@ const HomePage = () => {
                   onClick={() => navigate("/profile")}
                 >
                   <Brain className="mr-2 h-4 w-4" />
-                  Customize
+                  Customize Personality
                 </Button>
               </div>
             </div>
@@ -342,63 +153,170 @@ const HomePage = () => {
         </CardContent>
       </Card>
 
-      {/* Quick Actions */}
-      <div>
-        <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {quickActions.map((action, index) => (
-            <Card 
-              key={index} 
-              className="glass-card cursor-pointer hover:shadow-glow transition-all duration-300 group"
-              onClick={action.action}
-            >
-              <CardContent className="p-6 text-center space-y-3">
-                <div className="mx-auto w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center group-hover:animate-scale-in">
-                  <action.icon className="h-6 w-6 text-white" />
-                </div>
+      {/* Activity Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {activityStats.map((stat, index) => (
+          <Card key={index} className="glass-card">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="font-semibold text-sm">{action.title}</h3>
-                  <p className="text-xs text-muted-foreground">{action.description}</p>
+                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="text-2xl font-bold mt-1">{stat.value}</p>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <div className="w-12 h-12 rounded-full bg-gradient-primary/10 flex items-center justify-center">
+                  <stat.icon className="h-6 w-6 text-primary" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
-      {/* Two Column Layout: Insights + Activity Feed */}
+      {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Insights Cards - Takes 2 columns on large screens */}
-        <div className="lg:col-span-2">
-          <h2 className="text-xl font-semibold mb-4">Your AI Insights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {insights.map((insight, index) => (
-              <Card key={index} className="glass-card">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    {insight.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold mb-1">{insight.value}</div>
-                  <div className="text-xs text-accent font-medium flex items-center">
-                    <Sparkles className="h-3 w-3 mr-1" />
-                    {insight.trend}
+        
+        {/* Left Column - Connected Brands & Recommendations */}
+        <div className="lg:col-span-2 space-y-6">
+          
+          {/* Connected Brands */}
+          <Card className="glass-card">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Store className="h-5 w-5" />
+                  Connected Brands
+                </CardTitle>
+                <Button size="sm" variant="outline">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Connect New
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {connectedBrands.map((brand) => (
+                  <div 
+                    key={brand.id}
+                    className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg hover:bg-secondary/80 transition-colors cursor-pointer"
+                    onClick={() => navigate(`/brand/${brand.id}`)}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="text-3xl">{brand.logo}</div>
+                      <div>
+                        <h4 className="font-semibold">{brand.name}</h4>
+                        <p className="text-xs text-muted-foreground">
+                          {brand.interactions} interactions
+                        </p>
+                      </div>
+                    </div>
+                    <Badge variant="outline" className="bg-green-500/10 text-green-600 border-green-500/20">
+                      {brand.status}
+                    </Badge>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Recommendations */}
+          <Card className="glass-card">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Sparkles className="h-5 w-5" />
+                Recommended for You
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recommendations.map((rec, index) => (
+                  <div key={index} className="p-4 border border-border rounded-lg hover:border-primary transition-colors">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <h4 className="font-semibold">{rec.product}</h4>
+                        <p className="text-sm text-muted-foreground">from {rec.brand}</p>
+                      </div>
+                      <Button size="sm" variant="ghost">
+                        View
+                      </Button>
+                    </div>
+                    <p className="text-xs text-muted-foreground flex items-center gap-1">
+                      <TrendingUp className="h-3 w-3" />
+                      {rec.reason}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        {/* Activity Feed - Takes 1 column on large screens */}
+        {/* Right Column - Recent Activity */}
         <div className="lg:col-span-1">
-          <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-          <ActivityFeed />
+          <Card className="glass-card">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <History className="h-5 w-5" />
+                Recent Conversations
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recentConversations.map((conv, index) => (
+                  <div key={index} className="pb-4 border-b border-border last:border-0">
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-medium text-sm">{conv.brand}</h4>
+                      <Badge 
+                        variant="outline" 
+                        className={
+                          conv.sentiment === 'positive' 
+                            ? 'bg-green-500/10 text-green-600 border-green-500/20'
+                            : 'bg-yellow-500/10 text-yellow-600 border-yellow-500/20'
+                        }
+                      >
+                        {conv.sentiment}
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-1">{conv.message}</p>
+                    <p className="text-xs text-muted-foreground">{conv.time}</p>
+                  </div>
+                ))}
+              </div>
+              <Button 
+                variant="outline" 
+                className="w-full mt-4"
+                onClick={() => navigate("/history")}
+              >
+                View All Conversations
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Privacy Card */}
+          <Card className="glass-card mt-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-sm">
+                <Shield className="h-4 w-4" />
+                Privacy & Data
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-xs text-muted-foreground mb-3">
+                Your data is secure and you control what brands can access.
+              </p>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full"
+                onClick={() => navigate("/privacy")}
+              >
+                Manage Privacy Settings
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
-      {/* Voice Assistant Quick Access */}
+      {/* Floating Chat Button */}
       <div className="fixed bottom-6 right-6">
         <Button 
           size="lg" 
