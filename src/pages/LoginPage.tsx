@@ -10,6 +10,7 @@ import { Sparkles } from "lucide-react";
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<'user' | 'admin' | 'brand'>('user');
@@ -20,7 +21,7 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      await login(email, password, role);
+      await login(email, password, role, name);
       
       // Redirect based on role
       if (role === 'admin') {
@@ -53,6 +54,19 @@ const LoginPage = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
+            {/* Name */}
+            <div className="space-y-2">
+              <Label htmlFor="name">Your Name</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="Neha"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+
             {/* Email */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -121,7 +135,7 @@ const LoginPage = () => {
 
             {/* Demo Hint */}
             <p className="text-xs text-center text-muted-foreground mt-4">
-              Demo Mode: Any email/password works
+              Demo Mode: Any name/email/password works
             </p>
           </form>
         </CardContent>

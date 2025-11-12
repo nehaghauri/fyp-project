@@ -1,5 +1,4 @@
 
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +17,11 @@ import KnowledgeBasePage from "./pages/KnowledgeBasePage";
 import AdminHomePage from "@/pages/AdminHomePage";
 import AdminDashboard from "@/pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
+import BrandDiscoveryPage from "@/pages/BrandDiscoveryPage";
+import TrainingDetailsPage from "@/pages/TrainingDetailsPage";
+import ConversationHistoryPage from "@/pages/ConversationHistoryPage";
+import ActivityAnalyticsPage from "@/pages/ActivityAnalyticsPage";
+
 
 const queryClient = new QueryClient();
 
@@ -46,6 +50,15 @@ const App = () => (
               element={
                 <ProtectedRoute allowedRoles={['user']}>
                   <CustomersPage onNavigate={() => window.location.href = "/"} />
+                </ProtectedRoute>
+              } 
+            />
+
+            <Route 
+              path="/brands" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <BrandDiscoveryPage />
                 </ProtectedRoute>
               } 
             />
@@ -90,8 +103,16 @@ const App = () => (
                   <AdminHomePage />
                 </ProtectedRoute>
               } 
-
               
+            />
+
+            <Route 
+              path="/history" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <ConversationHistoryPage />
+                </ProtectedRoute>
+              } 
             />
             <Route 
               path="/admin" 
@@ -106,6 +127,26 @@ const App = () => (
               element={
                 <ProtectedRoute allowedRoles={['user']}>
                   <PersonalityPage />
+                </ProtectedRoute>
+              } 
+            />
+
+            import TrainingDetailsPage from "@/pages/TrainingDetailsPage";
+
+            <Route 
+              path="/training" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <TrainingDetailsPage />
+                </ProtectedRoute>
+              } 
+            />
+
+            <Route 
+              path="/analytics" 
+              element={
+                <ProtectedRoute allowedRoles={['user']}>
+                  <ActivityAnalyticsPage />
                 </ProtectedRoute>
               } 
             />

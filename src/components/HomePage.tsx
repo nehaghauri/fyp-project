@@ -20,6 +20,8 @@ import {
   Plus
 } from "lucide-react";
 import avatarImage from "@/assets/digital-twin-avatar.png";
+import NotificationCenter from "@/components/NotificationCenter";
+import TwinTrainingProgress from "@/components/TwinTrainingProgress";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -88,6 +90,7 @@ const HomePage = () => {
           </p>
         </div>
         <div className="flex gap-2">
+          <NotificationCenter />
           <Button 
             variant="outline" 
             size="icon" 
@@ -172,6 +175,20 @@ const HomePage = () => {
         ))}
       </div>
 
+      {/* ADD THIS: View Analytics Button */}
+      <div className="flex justify-end">
+        <Button 
+          variant="outline" 
+          onClick={() => navigate("/analytics")}
+          className="gap-2"
+        >
+          <TrendingUp className="h-4 w-4" />
+          View Detailed Analytics
+        </Button>
+      </div>
+
+      <TwinTrainingProgress />
+
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
@@ -186,10 +203,10 @@ const HomePage = () => {
                   <Store className="h-5 w-5" />
                   Connected Brands
                 </CardTitle>
-                <Button size="sm" variant="outline">
-                  <Plus className="h-4 w-4 mr-2" />
-                  Connect New
-                </Button>
+                  <Button size="sm" variant="outline" onClick={() => navigate("/brands")}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Connect New
+                  </Button>
               </div>
             </CardHeader>
             <CardContent>

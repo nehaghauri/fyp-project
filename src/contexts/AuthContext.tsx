@@ -10,7 +10,7 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string, role: 'user' | 'admin' | 'brand') => Promise<void>;
+  login: (email: string, password: string, role: 'user' | 'admin' | 'brand', name?: string) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -28,16 +28,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, []);
 
-  const login = async (email: string, password: string, role: 'user' | 'admin' | 'brand') => {
+  const login = async (email: string, password: string, role: 'user' | 'admin' | 'brand', name?: string) => {
     // Mock login - in real app, you'd call an API
-    // For demo, accept any email/password
     
     const mockUser: User = {
       id: Math.random().toString(36).substr(2, 9),
-      name: email.split('@')[0], // Use email prefix as name
+      name: name || email.split('@')[0], // Use provided name or email prefix
       email: email,
       role: role,
-      twinName: role === 'user' ? `${email.split('@')[0]}'s Digital Twin` : undefined
+      twinName: role === 'user' ? `${name || email.split('@')[0]}'s Digital Twin` : undefined
     };
 
     setUser(mockUser);
